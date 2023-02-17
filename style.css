@@ -1,3 +1,23 @@
+h1 {text-align: center;}
+head { 
+    font-family: Arial; 
+}
 body {
     font-family: Arial;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.Right {
+    width: 40%;
+    text-align: center;
+}
+
+.Left {
+    width: 60%;
+
 }
