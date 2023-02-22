@@ -1,4 +1,6 @@
 h1 {text-align: center;}
+
+h2 {text-align: center;}
 head { 
     font-family: Arial; 
 }
@@ -9,7 +11,7 @@ body {
 .container {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .Right {
@@ -25,4 +27,8 @@ body {
 .clicked {
     stroke-width: 3px;
     stroke: rgb(178, 123, 229);
+}
+
+.centered{
+    text-align: center;
 }
