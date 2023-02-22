@@ -1,7 +1,7 @@
 // Homework 5 JS Code
 
-const FRAME_HEIGHT = 500;
-const FRAME_WIDTH = 500;
+const FRAME_HEIGHT = 400;
+const FRAME_WIDTH = 400;
 const MARGINS = {left: 50, right: 50, top: 50, bottom: 50};
 
 // with a scale function
@@ -13,8 +13,6 @@ const FRAME1 = d3.select('#Scatter')
 					.attr('height', FRAME_HEIGHT)
 					.attr('width', FRAME_HEIGHT)
 					.attr('class', "frame");
-
-
 
 d3.csv('data/scatter-data.csv').then((data) => {
 
@@ -42,8 +40,11 @@ d3.csv('data/scatter-data.csv').then((data) => {
 				.attr('cy', (d) => {
 					return (yscale(d.y) + MARGINS.top)
 				})
-				.attr('r', 5)
-				.attr('class', 'point');
+				.attr('r', 10)
+				.attr('class', 'point')
+                .attr('id', (d) => {
+                    return '(' + d.x + ', ' + d.y + ')'; }); // not work?
+
 
 	FRAME1.append('g')
 			.attr('transform', 'translate(' + MARGINS.left + ',' 
@@ -58,8 +59,7 @@ d3.csv('data/scatter-data.csv').then((data) => {
                     .attr('font-size', '20px');
 
     function pointHoveredOn(event, d) {
-                        d3.select(this)
-                            .style('fill', 'yellow');
+                        d3.select(this).style('fill', 'yellow');
                     }
 
     function pointHoveredOff(event, d) {
@@ -68,16 +68,32 @@ d3.csv('data/scatter-data.csv').then((data) => {
                     }
                     
     function pointClicked(event, d) {
-                        d3.select(this)
-                            .style('fill', 'purple');
+                        let point = d3.select(this)
+                        point.classed('clicked', !point.node().classList.contains('clicked'));
+                        console.log(d3.select(this));
+                        let newText = 'Last Point Clicked ' + d3.select(this).id; //not work
+                        document.getElementById('selected_point').innerHTML = newText;
                     }
 
     // Add event listeners
-    FRAME1.selectAll('points')
+    FRAME1.selectAll('.point')
           .on('mouseover', pointHoveredOn)
           .on('mouseout', pointHoveredOff)
-          .on('mouseclick', pointClicked); 
+          .on('click', pointClicked); 
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -26,7 +26,3 @@ body {
     stroke-width: 3px;
     stroke: rgb(178, 123, 229);
 }
-
-.hovered {
-    fill: yellow
-}
