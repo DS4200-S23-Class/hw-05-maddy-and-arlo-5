@@ -1,13 +1,13 @@
+/* center all text */
 h1 {text-align: center;}
-
 h2 {text-align: center;}
-head { 
-    font-family: Arial; 
-}
+ul {text-align: center; list-style-position: inside; } 
+
 body {
     font-family: Arial;
 }
 
+/* styling for columns with correct proportions */
 .container {
     display: flex;
     flex-direction: row;
@@ -24,11 +24,17 @@ body {
 
 }
 
+/* styling for functionality */
 .clicked {
     stroke-width: 3px;
     stroke: rgb(178, 123, 229);
 }
 
-.centered{
-    text-align: center;
-}
+.tooltip {
+    position: absolute;
+    background-color: rgb(180, 178, 178);
+    border:  solid;
+    border-width: 2px;
+    border-radius: 5px;
+    padding: 5px;
+  }
