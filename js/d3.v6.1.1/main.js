@@ -173,7 +173,6 @@ d3.csv('data/bar-data.csv').then((data) => {
         .attr("height", (d) => {return VIS_HEIGHT - Y_SCALE(d.amount) -50;});
 
     // Tooltip
-
     const TOOLTIP = d3.select(".Left")
                         .append("div")
                           .attr("class", "tooltip")
@@ -207,8 +206,8 @@ d3.csv('data/bar-data.csv').then((data) => {
 
     // Add x axis 
     g.append("g")
-          .attr("transform", "translate(" + MARG.left +
-                "," + (VIS_HEIGHT + MARG.top) + ")")
+          .attr("transform", "translate(" + MARGINS.left +
+                "," + (VIS_HEIGHT + MARGINS.top) + ")")
           .call(d3.axisBottom(X_SCALE).ticks(4))
             .attr("font-size", '20px');
     });
