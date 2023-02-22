@@ -11,7 +11,8 @@ const VIS_WIDTH = FRAME_WIDTH - MARGINS.left - MARGINS.right;
 
 // functions for event handling
 function pointHoveredOn(event, d) {
-                    d3.select(this).style('fill', 'yellow');
+                    d3.select(this)
+                        .style('fill', 'yellow');
                 }
 
 function pointHoveredOff(event, d) {
@@ -146,14 +147,6 @@ d3.csv('data/bar-data.csv').then((data) => {
                                 return parseInt(d.amount)
                             });
 
-    // *  scaling functions
-     // const xscale = d3.scaleBand()
-        //    .range([0, VIS_WIDTH]).padding(0, 4);
-    // const yscale = d3.scaleLinear()
-   //         .domain([(MAX_Y + 1), 0])
-     //        .range([0, VIS_HEIGHT]); 
-
-
    // scaling functions
     let X_SCALE = d3.scaleBand().range([0, VIS_WIDTH]).padding(0.4)
     let Y_SCALE =  d3.scaleLinear().range([VIS_HEIGHT - 50,0]);
@@ -181,26 +174,29 @@ d3.csv('data/bar-data.csv').then((data) => {
 
     // Tooltip
 
-    const TOOLTIP = d3.select("#vis1")
+    const TOOLTIP = d3.select(".Left")
                         .append("div")
                           .attr("class", "tooltip")
                           .style("opacity", 0);
 
     // event handler functions
     function handleMouseover(event, d) {
-     
-      TOOLTIP.style("opacity", 1);
+        TOOLTIP.style("opacity", 1);
+        d3.select(this)
+            .style('fill', 'yellow');
+
     }
-    function handleMousemove(event, d) {
-      
+
+    function handleMousemove(event, d) {  
       TOOLTIP.html("Name: " + d.category + "<br>Value: " + d.amount)
-              .style("left", (event.pageX + 10) + "px") 
-                                                          
+              .style("left", (event.pageX + 10) + "px")                   
               .style("top", (event.pageY - 50) + "px");
     }
-    function handleMouseleave(event, d) {
-      
-      TOOLTIP.style("opacity", 0);
+
+    function handleMouseleave(event, d) {  
+        TOOLTIP.style("opacity", 0);
+         d3.select(this)
+            .style('fill', 'black');       
     }
 
     // Add event listeners
